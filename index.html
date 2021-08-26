@@ -23,19 +23,127 @@ body {
   <circle cx="275" cy="275" r="10" stroke="green" stroke-width="4" fill="yellow" />
   
   <rect x="215" y="225" rx="10" ry="10" width="35" height="25"
-  style="fill:red;stroke:black;stroke-width:5;opacity:0.5" />
+  style="fill:red;stroke:black;stroke-width:5;opacity:1" />
   <rect x="300" y="225" rx="10" ry="10" width="35" height="25"
-  style="fill:red;stroke:black;stroke-width:5;opacity:0.5" />
+  style="fill:red;stroke:black;stroke-width:5;opacity:1" />
   <rect x="150" y="150" width="50" height="50"
   style="fill:rgb(44, 44, 44);stroke:pink;stroke-width:5;fill-opacity:0.9;stroke-opacity:0.9" />
   <rect x="350" y="150" width="50" height="50"
   style="fill:rgb(44, 44, 44);stroke:pink;stroke-width:5;fill-opacity:0.9;stroke-opacity:0.9" />
   <rect x="225" y="300" rx="20" ry="20" width="100" height="15"
-  style="fill:red;stroke:black;stroke-width:5;opacity:0.5" />
+  style="fill:red;stroke:black;stroke-width:5;opacity:1" />
 </svg>
 
-<canvas id="myCanvas" width="500" height="500" style="border:1px solid #000000;">
+<canvas id="abstraktCanvas" width="500" height="500" style="border:1px solid #000000; background-color: rgb(0,0,255);">
 </canvas>
+<script>
+  var canvasArt = document.getElementById("abstraktCanvas");
+  var artCtx = canvasArt.getContext("2d");
+  
+  artCtx.beginPath();
+  artCtx.rect(200, 200, 150, 150)
+  artCtx.closePath();
+  artCtx.fillStyle = "rgb(44, 44, 44)";
+  artCtx.lineWidth = 5;
+  artCtx.strokeStyle = "pink";
+  artCtx.fill();
+  artCtx.stroke();
+
+  artCtx.beginPath();
+  artCtx.moveTo(200, 350);
+  artCtx.lineTo(245, 450);
+  artCtx.lineTo(305, 450);
+  artCtx.lineTo(350, 350);
+  artCtx.closePath();
+  artCtx.fillStyle = "rgb(44, 44, 44)";
+  artCtx.lineWidth = 5;
+  artCtx.strokeStyle = "pink";
+  artCtx.fill();
+  artCtx.stroke();
+
+  artCtx.beginPath();
+  artCtx.rect(350, 150, 50, 50)
+  artCtx.closePath();
+  artCtx.fillStyle = "rgb(44, 44, 44)";
+  artCtx.lineWidth = 5;
+  artCtx.strokeStyle = "pink";
+  artCtx.fill();
+  artCtx.stroke();
+
+  artCtx.beginPath();
+  artCtx.rect(150, 150, 50, 50)
+  artCtx.closePath();
+  artCtx.fillStyle = "rgb(44, 44, 44)";
+  artCtx.lineWidth = 5;
+  artCtx.strokeStyle = "pink";
+  artCtx.fill();
+  artCtx.stroke();
+
+  artCtx.beginPath();
+  artCtx.moveTo(225, 225);
+  artCtx.lineTo(240, 225);
+  artCtx.quadraticCurveTo(250, 225, 250, 235);
+  artCtx.lineTo(250, 240);
+  artCtx.quadraticCurveTo(250, 250, 240, 250);
+  artCtx.lineTo(225, 250);
+  artCtx.quadraticCurveTo(215, 250, 215, 240);
+  artCtx.lineTo(215, 235);
+  artCtx.quadraticCurveTo(215, 225, 225, 225);
+  artCtx.closePath();
+  artCtx.closePath();
+  artCtx.fillStyle = "red";
+  artCtx.lineWidth = 5;
+  artCtx.strokeStyle = "black";
+  artCtx.fill();
+  artCtx.stroke();
+
+  artCtx.beginPath();
+  artCtx.moveTo(310, 225);
+  artCtx.lineTo(325, 225);
+  artCtx.quadraticCurveTo(335, 225, 335, 235);
+  artCtx.lineTo(335, 240);
+  artCtx.quadraticCurveTo(335, 250, 325, 250);
+  artCtx.lineTo(310, 250);
+  artCtx.quadraticCurveTo(300, 250, 300, 240);
+  artCtx.lineTo(300, 235);
+  artCtx.quadraticCurveTo(300, 225, 310, 225);
+  artCtx.closePath();
+
+  artCtx.closePath();
+  artCtx.fillStyle = "red";
+  artCtx.lineWidth = 5;
+  artCtx.strokeStyle = "black";
+  artCtx.fill();
+  artCtx.stroke();
+
+  artCtx.beginPath();
+  artCtx.moveTo(240, 300);
+  artCtx.lineTo(310, 300);
+  artCtx.quadraticCurveTo(345, 307.5, 310, 315);
+  artCtx.lineTo(240, 315);
+  artCtx.quadraticCurveTo(205, 307.5, 240, 300);
+  
+  artCtx.closePath();
+  artCtx.fillStyle = "red";
+  artCtx.lineWidth = 5;
+  artCtx.strokeStyle = "black";
+  artCtx.fill();
+  artCtx.stroke();
+
+
+  artCtx.beginPath();
+  artCtx.arc(275, 275, 10, 0, 2 * Math.PI);
+  artCtx.closePath();
+  artCtx.fillStyle = "yellow";
+  artCtx.lineWidth = 5;
+  artCtx.strokeStyle = "green";
+  artCtx.fill();
+  artCtx.stroke();
+  //arc(100, 75, 50, 0, 2 * Math.PI);
+
+  
+  
+  </script>
 
 </body>
 </html>
