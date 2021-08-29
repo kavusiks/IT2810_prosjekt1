@@ -16,8 +16,9 @@
 
   <h1>Kunst av Pablo da Abstracto</h1>
   <p>Pablo da Abstracto(1881-1973) var en av de mest kjente kunsterne fra 1900-tallet. Han er kjent for sine abstrakte
-    malerier. Han regnes som grunnleggeren av kubismen. Under ser vi hans mest kjente verk. </p>
+    malerier. Maleriene hans var kjent for bruken av geometriske figurer. Under ser vi hans mest kjente verk. </p>
 
+  <h3>Roboten (SVG)</h3>
   <svg width="500" height="500">
     <rect width="500" height="500" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)" />
     <polygon points="200,350 245,450 305,450 350,350"
@@ -40,6 +41,7 @@
       style="fill:red;stroke:black;stroke-width:5;opacity:1" />
   </svg>
 
+  <h3>Roboten (Canvas)</h3>
   <canvas id="abstraktCanvas" width="500" height="500"
     style="border:1px solid #000000; background-color: rgb(0,0,255);">
   </canvas>
@@ -47,81 +49,53 @@
     var canvasArt = document.getElementById("abstraktCanvas");
     var artCtx = canvasArt.getContext("2d");
 
-    artCtx.beginPath();
-    artCtx.rect(200, 200, 150, 150)
-    artCtx.closePath();
-    artCtx.fillStyle = "rgb(44, 44, 44)";
-    artCtx.lineWidth = 5;
-    artCtx.strokeStyle = "pink";
-    artCtx.fill();
-    artCtx.stroke();
 
-    artCtx.beginPath();
-    artCtx.moveTo(200, 350);
-    artCtx.lineTo(245, 450);
-    artCtx.lineTo(305, 450);
-    artCtx.lineTo(350, 350);
-    artCtx.closePath();
-    artCtx.fillStyle = "rgb(44, 44, 44)";
-    artCtx.lineWidth = 5;
-    artCtx.strokeStyle = "pink";
-    artCtx.fill();
-    artCtx.stroke();
+    function createRect(context, x, y, width, heigth, color, outlineColor) {
+      context.beginPath();
+      context.rect(x, y, width, width)
+      context.closePath();
+      fillColor(context, color, outlineColor, 5)
+    }
 
-    artCtx.beginPath();
-    artCtx.rect(350, 150, 50, 50)
-    artCtx.closePath();
-    artCtx.fillStyle = "rgb(44, 44, 44)";
-    artCtx.lineWidth = 5;
-    artCtx.strokeStyle = "pink";
-    artCtx.fill();
-    artCtx.stroke();
+    function createTrapezoid(context, ax, ay, bx, by, cx, cy, dx, dy, color, outlineColor) {
+      context.beginPath();
+      context.moveTo(ax, ay);
+      context.lineTo(bx, by);
+      context.lineTo(cx, cy);
+      context.lineTo(dx, dy);
+      context.closePath();
+      fillColor(context, color, outlineColor, 5)
 
-    artCtx.beginPath();
-    artCtx.rect(150, 150, 50, 50)
-    artCtx.closePath();
-    artCtx.fillStyle = "rgb(44, 44, 44)";
-    artCtx.lineWidth = 5;
-    artCtx.strokeStyle = "pink";
-    artCtx.fill();
-    artCtx.stroke();
+    }
+    function createRoundedRect(context, diagonalFromX, diagonalFromY, diagonalToX, diagonalToY, color, outlineColor) {
+      context.beginPath();
+      context.moveTo(diagonalFromX + 10, diagonalFromY);
+      context.lineTo(diagonalToX - 10, diagonalFromY);
+      context.quadraticCurveTo(diagonalToX, diagonalFromY, diagonalToX, diagonalFromY + 10);
+      context.lineTo(diagonalToX, diagonalToY - 10);
+      context.quadraticCurveTo(diagonalToX, diagonalToY, diagonalToX - 10, diagonalToY);
+      context.lineTo(diagonalFromX + 10, diagonalToY);
+      context.quadraticCurveTo(diagonalFromX, diagonalToY, diagonalFromX, diagonalToY - 10);
+      context.lineTo(diagonalFromX, diagonalFromY + 10);
+      context.quadraticCurveTo(diagonalFromX, diagonalFromY, diagonalFromX + 10, diagonalFromY);
+      context.closePath();
+      fillColor(context, color, outlineColor, 5)
+    }
+    function fillColor(context, mainColor, outlineColor, lineWidth) {
+      context.fillStyle = mainColor;
+      context.lineWidth = lineWidth;
+      context.strokeStyle = outlineColor;
+      context.fill();
+      context.stroke();
+    }
 
-    artCtx.beginPath();
-    artCtx.moveTo(225, 225);
-    artCtx.lineTo(240, 225);
-    artCtx.quadraticCurveTo(250, 225, 250, 235);
-    artCtx.lineTo(250, 240);
-    artCtx.quadraticCurveTo(250, 250, 240, 250);
-    artCtx.lineTo(225, 250);
-    artCtx.quadraticCurveTo(215, 250, 215, 240);
-    artCtx.lineTo(215, 235);
-    artCtx.quadraticCurveTo(215, 225, 225, 225);
-    artCtx.closePath();
-    artCtx.closePath();
-    artCtx.fillStyle = "red";
-    artCtx.lineWidth = 5;
-    artCtx.strokeStyle = "black";
-    artCtx.fill();
-    artCtx.stroke();
+    createRect(artCtx, 200, 200, 150, 150, "rgb(44, 44, 44)", "pink");
+    createRect(artCtx, 350, 150, 50, 50, "rgb(44, 44, 44)", "pink");
+    createRect(artCtx, 150, 150, 50, 50, "rgb(44, 44, 44)", "pink");
+    createTrapezoid(artCtx, 200, 350, 245, 450, 305, 450, 350, 350, "rgb(44, 44, 44)", "pink");
+    createRoundedRect(artCtx, 215, 225, 250, 250, "red", "black");
+    createRoundedRect(artCtx, 300, 225, 335, 250, "red", "black");
 
-    artCtx.beginPath();
-    artCtx.moveTo(310, 225);
-    artCtx.lineTo(325, 225);
-    artCtx.quadraticCurveTo(335, 225, 335, 235);
-    artCtx.lineTo(335, 240);
-    artCtx.quadraticCurveTo(335, 250, 325, 250);
-    artCtx.lineTo(310, 250);
-    artCtx.quadraticCurveTo(300, 250, 300, 240);
-    artCtx.lineTo(300, 235);
-    artCtx.quadraticCurveTo(300, 225, 310, 225);
-    artCtx.closePath();
-
-    artCtx.closePath();
-    artCtx.fillStyle = "red";
-    artCtx.lineWidth = 5;
-    artCtx.strokeStyle = "black";
-    artCtx.fill();
-    artCtx.stroke();
 
     artCtx.beginPath();
     artCtx.moveTo(240, 300);
@@ -129,25 +103,23 @@
     artCtx.quadraticCurveTo(345, 307.5, 310, 315);
     artCtx.lineTo(240, 315);
     artCtx.quadraticCurveTo(205, 307.5, 240, 300);
-
     artCtx.closePath();
-    artCtx.fillStyle = "red";
-    artCtx.lineWidth = 5;
-    artCtx.strokeStyle = "black";
-    artCtx.fill();
-    artCtx.stroke();
+    fillColor(artCtx, "red", "black", 5)
 
+    function drawNose(context, centerX, centerY, radius) {
+      context.beginPath();
+      context.arc(centerX, centerY, radius, 0, 2 * Math.PI);
+      context.closePath();
+      fillColor(artCtx, "yellow", "green", 5);
+    }
 
-    artCtx.beginPath();
-    artCtx.arc(275, 275, 10, 0, 2 * Math.PI);
-    artCtx.closePath();
-    artCtx.fillStyle = "yellow";
-    artCtx.lineWidth = 5;
-    artCtx.strokeStyle = "green";
-    artCtx.fill();
-    artCtx.stroke();
-  //arc(100, 75, 50, 0, 2 * Math.PI);
-
+    function hideNose(context, centerX, centerY, radius) {
+      context.beginPath();
+      context.arc(centerX, centerY, radius, 0, 2 * Math.PI);
+      context.closePath();
+      fillColor(artCtx, "rgb(44,44,44)", "rgb(44,44,44)", 5);
+    }
+    drawNose(artCtx, 275, 275, 10);
 
 
   </script>
