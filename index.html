@@ -3,13 +3,15 @@
 
 <head>
   <title>Page Title</title>
+  <link rel="stylesheet" href="style.css">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <style>
     body {
       font-family: Arial, Helvetica, sans-serif;
     }
-  </style>
+    </style>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -18,36 +20,58 @@
   <p>Pablo da Abstracto(1881-1973) var en av de mest kjente kunsterne fra 1900-tallet. Han er kjent for sine abstrakte
     malerier. Maleriene hans var kjent for bruken av geometriske figurer. Under ser vi hans mest kjente verk. </p>
 
-  <h3>Roboten (SVG)</h3>
-  <svg width="550" height="550">
-    <rect width="550" height="550" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)" />
-    <polygon id="body" points="200,350 245,450 305,450 350,350"
-      style="fill:rgb(44, 44, 44);stroke:pink;stroke-width:5;fill-rule:nonzero;" />
-    <rect id="face" x="200" y="200" width="150" height="150"
-      style="fill:rgb(44, 44, 44);stroke:pink;stroke-width:5;fill-opacity:0.9;stroke-opacity:0.9" />
-    <circle id= "nose" cx="275" cy="275" r="10" stroke="rgba(0, 255, 0)" stroke-width="4" fill="yellow">
-      <animate attributeType="CSS" attributeName="opacity" from="1" to="0" dur="3.5s" repeatCount="indefinite" />
-    </circle>
+    <div class ="SVGArt" id="svg">
+      
+      <h3>Roboten (SVG)</h3>
+      <svg class="abstractSVG" width="550" height="550">
+        <rect width="550" height="550" style="fill:rgb(0,0,255);stroke-width:2;stroke:rgb(0,0,0)" />
+        <polygon id="body" points="200,350 245,450 305,450 350,350"
+        style="fill:rgb(44, 44, 44);stroke:black;stroke-width:2;" />
+        <rect id="face" x="200" y="200" width="150" height="150"
+        style="fill:rgb(44, 44, 44);stroke:black;stroke-width:2;"/>
+        <circle id= "nose" cx="275" cy="275" r="10" stroke="black" stroke-width="1" fill="yellow">
+          <animate attributeType="CSS" attributeName="opacity" from="1" to="0" dur="3.5s" repeatCount="indefinite" />
+        </circle>
+        
+        <rect id="leftEye" x="215" y="225" rx="10" ry="10" width="35" height="25"
+        style="fill:red;stroke:black;stroke-width:1" />
+        <rect id="rightEye" x="300" y="225" rx="10" ry="10" width="35" height="25"
+        style="fill:red;stroke:black;stroke-width:1" />
+        
+        <rect id= "leftEar"  class="ears" x="200" y="150" width="50" height="50"
+        style="fill:rgb(44, 44, 44);stroke:black;stroke-width:2;"/>
+        <rect id="rightEar" class="ears" x="300" y="150" width="50" height="50"
+        style="fill:rgb(44, 44, 44);stroke:black;stroke-width:2;"/>
+        <rect id="mouth" x="225" y="300" rx="20" ry="20" width="100" height="15"
+        style="fill:red;stroke:black;stroke-width:2;" />
+      </svg>
+        
+      <script type ="text/javascript">
+    $(document).ready(function() {
+      $("svg").mouseenter(function() {
+        console.log("test")
+        $(".ears").addClass("animate-ears")
+      
+      
+    })
+    $("svg").mouseleave(function() {
+        console.log("tesst")
+        $(".ears").removeClass("animate-ears")
+  })});
+    
+    </script>
+    </div>
 
-    <rect id="leftEye" x="215" y="225" rx="10" ry="10" width="35" height="25"
-      style="fill:red;stroke:black;stroke-width:5;opacity:1" />
-    <rect id="rightEye" x="300" y="225" rx="10" ry="10" width="35" height="25"
-      style="fill:red;stroke:black;stroke-width:5;opacity:1" />
-    <rect id= "leftEar" x="150" y="150" width="50" height="50"
-      style="fill:rgb(44, 44, 44);stroke:pink;stroke-width:5;fill-opacity:0.9;stroke-opacity:0.9" />
-    <rect id="rightEar" x="350" y="150" width="50" height="50"
-      style="fill:rgb(44, 44, 44);stroke:pink;stroke-width:5;fill-opacity:0.9;stroke-opacity:0.9" />
-    <rect id="mouth" x="225" y="300" rx="20" ry="20" width="100" height="15"
-      style="fill:red;stroke:black;stroke-width:5;opacity:1" />
-  </svg>
-
-  <h3>Roboten (Canvas)</h3>
-  <canvas id="abstraktCanvas" width="550" height="550"
-    style="border:1px solid #000000; background-color: rgb(0,0,255);">
-  </canvas>
-  <script
-   type="text/javascript" src="CanvasScript.js">
+<div class = "canvasArt">
+<h3>Roboten (Canvas)</h3>
+<canvas id="abstractCanvas" width="550" height="550"
+style="border:1px solid #000000; background-color: rgb(0,0,255);">
+</canvas>
+<script
+type="text/javascript" src="CanvasScript.js">
   </script>
+
+</div>  
 
 </body>
 

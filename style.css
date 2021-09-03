@@ -1,0 +1,13 @@
+.animate-ears {
+  animation: earsUp 5s infinite;
+  animation-timing-function: linear;
+}
+
+@keyframes earsUp {
+  from {
+    y: 150px;
+  }
+  to {
+    y: 0px;
+  }
+}

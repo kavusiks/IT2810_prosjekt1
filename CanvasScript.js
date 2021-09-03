@@ -1,10 +1,43 @@
-var canvasArt = document.getElementById("abstraktCanvas");
+var canvasArt = document.getElementById("abstractCanvas");
 var artCtx = canvasArt.getContext("2d");
+let movingEarsAniamtion = null;
 
+
+canvasArt.addEventListener('mouseover', animateEars, false);
+canvasArt.addEventListener('mouseout', stopEars, false);
+
+var y=150
+
+function stopEars() {
+  artCtx.clearRect(199, 149, 52,50)
+artCtx.clearRect(199, y-1, 52,52)
+artCtx.clearRect(299, 149, 52,50)
+artCtx.clearRect(299, y-1, 52,52)
+  cancelAnimationFrame(movingEarsAniamtion);
+y=150;
+}
+function animateEars() {
+  console.log("fdkjshj");
+  if (y <= 0) {
+    artCtx.clearRect(199, y-1, 52,52)
+    artCtx.clearRect(299, y-1, 52,52)
+    y=150;
+} 
+movingEarsAniamtion = requestAnimationFrame(animateEars);
+
+artCtx.clearRect(199, 149, 52,50)
+artCtx.clearRect(199, y-1, 52,52)
+artCtx.clearRect(299, 149, 52,50)
+artCtx.clearRect(299, y-1, 52,52)
+y += -1;
+createRect(artCtx, 200, y, 50, 50, "rgb(44, 44, 44)", "pink");
+
+createRect(artCtx, 300, y, 50, 50, "rgb(44, 44, 44)", "pink");
+}
 
 function createRect(context, x, y, width, heigth, color, outlineColor) {
   context.beginPath();
-  context.rect(x, y, width, width)
+  context.rect(x, y, width, heigth)
   context.closePath();
   fillColor(context, color, outlineColor, 5)
 }
@@ -35,11 +68,12 @@ function createRoundedRect(context, diagonalFromX, diagonalFromY, diagonalToX, d
 }
 function fillColor(context, mainColor, outlineColor, lineWidth) {
   context.fillStyle = mainColor;
-  context.lineWidth = lineWidth;
-  context.strokeStyle = outlineColor;
+  //context.lineWidth = lineWidth;
+  //context.strokeStyle = outlineColor;
   context.fill();
   context.stroke();
 }
+
 
 
 artCtx.beginPath();
@@ -78,8 +112,8 @@ function draw() {
   //prøv å lage en loop som endrer fargen til nesa
 
 createRect(artCtx, 200, 200, 150, 150, "rgb(44, 44, 44)", "pink");
-createRect(artCtx, 350, 150, 50, 50, "rgb(44, 44, 44)", "pink");
-createRect(artCtx, 150, 150, 50, 50, "rgb(44, 44, 44)", "pink");
+createRect(artCtx, 200, 150, 50, 50, "rgb(44, 44, 44)", "pink");
+createRect(artCtx, 300, 150, 50, 50, "rgb(44, 44, 44)", "pink");
 createTrapezoid(artCtx, 200, 350, 245, 450, 305, 450, 350, 350, "rgb(44, 44, 44)", "pink");
 createRoundedRect(artCtx, 215, 225, 250, 250, "red", "black");
 createRoundedRect(artCtx, 300, 225, 335, 250, "red", "black");
@@ -93,8 +127,10 @@ artCtx.closePath();
 fillColor(artCtx, "red", "black", 5)
 //drawNose(artCtx, 275, 275, 10, 1);
 window.requestAnimationFrame(draw);
-fadeout();
+//fadeOut();
 }
+
+//function drawLeftEar()
 
 var alpha = 1.0;
 function fadeOut() {
@@ -105,7 +141,8 @@ function fadeOut() {
     drawNose(artCtx, 275, 275, 10, alpha);
     alpha += -0.01;
 
-}       
+}
+
 
 init();
 
