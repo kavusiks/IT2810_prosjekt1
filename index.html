@@ -19,109 +19,34 @@
     malerier. Maleriene hans var kjent for bruken av geometriske figurer. Under ser vi hans mest kjente verk. </p>
 
   <h3>Roboten (SVG)</h3>
-  <svg width="500" height="500">
-    <rect width="500" height="500" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)" />
-    <polygon points="200,350 245,450 305,450 350,350"
+  <svg width="550" height="550">
+    <rect width="550" height="550" style="fill:rgb(0,0,255);stroke-width:3;stroke:rgb(0,0,0)" />
+    <polygon id="body" points="200,350 245,450 305,450 350,350"
       style="fill:rgb(44, 44, 44);stroke:pink;stroke-width:5;fill-rule:nonzero;" />
-    <rect x="200" y="200" width="150" height="150"
+    <rect id="face" x="200" y="200" width="150" height="150"
       style="fill:rgb(44, 44, 44);stroke:pink;stroke-width:5;fill-opacity:0.9;stroke-opacity:0.9" />
-    <circle cx="275" cy="275" r="10" stroke="green" stroke-width="4" fill="yellow">
-      <animate attributeType="CSS" attributeName="opacity" from="1" to="0" dur="5s" repeatCount="indefinite" />
+    <circle id= "nose" cx="275" cy="275" r="10" stroke="rgba(0, 255, 0)" stroke-width="4" fill="yellow">
+      <animate attributeType="CSS" attributeName="opacity" from="1" to="0" dur="3.5s" repeatCount="indefinite" />
     </circle>
 
-    <rect x="215" y="225" rx="10" ry="10" width="35" height="25"
+    <rect id="leftEye" x="215" y="225" rx="10" ry="10" width="35" height="25"
       style="fill:red;stroke:black;stroke-width:5;opacity:1" />
-    <rect x="300" y="225" rx="10" ry="10" width="35" height="25"
+    <rect id="rightEye" x="300" y="225" rx="10" ry="10" width="35" height="25"
       style="fill:red;stroke:black;stroke-width:5;opacity:1" />
-    <rect x="150" y="150" width="50" height="50"
+    <rect id= "leftEar" x="150" y="150" width="50" height="50"
       style="fill:rgb(44, 44, 44);stroke:pink;stroke-width:5;fill-opacity:0.9;stroke-opacity:0.9" />
-    <rect x="350" y="150" width="50" height="50"
+    <rect id="rightEar" x="350" y="150" width="50" height="50"
       style="fill:rgb(44, 44, 44);stroke:pink;stroke-width:5;fill-opacity:0.9;stroke-opacity:0.9" />
-    <rect x="225" y="300" rx="20" ry="20" width="100" height="15"
+    <rect id="mouth" x="225" y="300" rx="20" ry="20" width="100" height="15"
       style="fill:red;stroke:black;stroke-width:5;opacity:1" />
   </svg>
 
   <h3>Roboten (Canvas)</h3>
-  <canvas id="abstraktCanvas" width="500" height="500"
+  <canvas id="abstraktCanvas" width="550" height="550"
     style="border:1px solid #000000; background-color: rgb(0,0,255);">
   </canvas>
-  <script>
-    var canvasArt = document.getElementById("abstraktCanvas");
-    var artCtx = canvasArt.getContext("2d");
-
-
-    function createRect(context, x, y, width, heigth, color, outlineColor) {
-      context.beginPath();
-      context.rect(x, y, width, width)
-      context.closePath();
-      fillColor(context, color, outlineColor, 5)
-    }
-
-    function createTrapezoid(context, ax, ay, bx, by, cx, cy, dx, dy, color, outlineColor) {
-      context.beginPath();
-      context.moveTo(ax, ay);
-      context.lineTo(bx, by);
-      context.lineTo(cx, cy);
-      context.lineTo(dx, dy);
-      context.closePath();
-      fillColor(context, color, outlineColor, 5)
-
-    }
-    function createRoundedRect(context, diagonalFromX, diagonalFromY, diagonalToX, diagonalToY, color, outlineColor) {
-      context.beginPath();
-      context.moveTo(diagonalFromX + 10, diagonalFromY);
-      context.lineTo(diagonalToX - 10, diagonalFromY);
-      context.quadraticCurveTo(diagonalToX, diagonalFromY, diagonalToX, diagonalFromY + 10);
-      context.lineTo(diagonalToX, diagonalToY - 10);
-      context.quadraticCurveTo(diagonalToX, diagonalToY, diagonalToX - 10, diagonalToY);
-      context.lineTo(diagonalFromX + 10, diagonalToY);
-      context.quadraticCurveTo(diagonalFromX, diagonalToY, diagonalFromX, diagonalToY - 10);
-      context.lineTo(diagonalFromX, diagonalFromY + 10);
-      context.quadraticCurveTo(diagonalFromX, diagonalFromY, diagonalFromX + 10, diagonalFromY);
-      context.closePath();
-      fillColor(context, color, outlineColor, 5)
-    }
-    function fillColor(context, mainColor, outlineColor, lineWidth) {
-      context.fillStyle = mainColor;
-      context.lineWidth = lineWidth;
-      context.strokeStyle = outlineColor;
-      context.fill();
-      context.stroke();
-    }
-
-    createRect(artCtx, 200, 200, 150, 150, "rgb(44, 44, 44)", "pink");
-    createRect(artCtx, 350, 150, 50, 50, "rgb(44, 44, 44)", "pink");
-    createRect(artCtx, 150, 150, 50, 50, "rgb(44, 44, 44)", "pink");
-    createTrapezoid(artCtx, 200, 350, 245, 450, 305, 450, 350, 350, "rgb(44, 44, 44)", "pink");
-    createRoundedRect(artCtx, 215, 225, 250, 250, "red", "black");
-    createRoundedRect(artCtx, 300, 225, 335, 250, "red", "black");
-
-
-    artCtx.beginPath();
-    artCtx.moveTo(240, 300);
-    artCtx.lineTo(310, 300);
-    artCtx.quadraticCurveTo(345, 307.5, 310, 315);
-    artCtx.lineTo(240, 315);
-    artCtx.quadraticCurveTo(205, 307.5, 240, 300);
-    artCtx.closePath();
-    fillColor(artCtx, "red", "black", 5)
-
-    function drawNose(context, centerX, centerY, radius) {
-      context.beginPath();
-      context.arc(centerX, centerY, radius, 0, 2 * Math.PI);
-      context.closePath();
-      fillColor(artCtx, "yellow", "green", 5);
-    }
-
-    function hideNose(context, centerX, centerY, radius) {
-      context.beginPath();
-      context.arc(centerX, centerY, radius, 0, 2 * Math.PI);
-      context.closePath();
-      fillColor(artCtx, "rgb(44,44,44)", "rgb(44,44,44)", 5);
-    }
-    drawNose(artCtx, 275, 275, 10);
-
-
+  <script
+   type="text/javascript" src="CanvasScript.js">
   </script>
 
 </body>
