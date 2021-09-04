@@ -39,7 +39,7 @@ function createRect(context, x, y, width, heigth, color, outlineColor) {
   context.beginPath();
   context.rect(x, y, width, heigth)
   context.closePath();
-  fillColor(context, color, outlineColor, 5)
+  fillColor(context, color)
 }
 
 function createTrapezoid(context, ax, ay, bx, by, cx, cy, dx, dy, color, outlineColor) {
@@ -49,7 +49,7 @@ function createTrapezoid(context, ax, ay, bx, by, cx, cy, dx, dy, color, outline
   context.lineTo(cx, cy);
   context.lineTo(dx, dy);
   context.closePath();
-  fillColor(context, color, outlineColor, 5)
+  fillColor(context, color)
 
 }
 function createRoundedRect(context, diagonalFromX, diagonalFromY, diagonalToX, diagonalToY, color, outlineColor) {
@@ -66,10 +66,8 @@ function createRoundedRect(context, diagonalFromX, diagonalFromY, diagonalToX, d
   context.closePath();
   fillColor(context, color, outlineColor, 5)
 }
-function fillColor(context, mainColor, outlineColor, lineWidth) {
+function fillColor(context, mainColor) {
   context.fillStyle = mainColor;
-  //context.lineWidth = lineWidth;
-  //context.strokeStyle = outlineColor;
   context.fill();
   context.stroke();
 }
@@ -83,15 +81,15 @@ artCtx.quadraticCurveTo(345, 307.5, 310, 315);
 artCtx.lineTo(240, 315);
 artCtx.quadraticCurveTo(205, 307.5, 240, 300);
 artCtx.closePath();
-fillColor(artCtx, "red", "black", 5)
+fillColor(artCtx, "red");
 
 function drawNose(context, centerX, centerY, radius, alpha) {
 
   context.beginPath();
   context.arc(centerX, centerY, radius, 0, 2 * Math.PI);
   context.closePath();
-  fillColor(artCtx, `rgba(255, 255, 0, ${alpha})`, `rgba(0, 255, 0, ${alpha})`, 5);
-  //fillColor(artCtx, `rgba(255, 255, 0)`, "green", 5);
+  fillColor(artCtx, `rgba(255, 255, 0, ${alpha})`);
+
 }
 
 
@@ -99,7 +97,7 @@ function hideNose(context, centerX, centerY, radius) {
   context.beginPath();
   context.arc(centerX, centerY, radius, 0, 2 * Math.PI);
   context.closePath();
-  fillColor(artCtx, "rgb(44,44,44)", "rgb(44,44,44)", 5);
+  fillColor(artCtx, "rgb(44,44,44)");
 }
 drawNose(artCtx, 275, 275, 10);
 
@@ -124,7 +122,7 @@ artCtx.quadraticCurveTo(345, 307.5, 310, 315);
 artCtx.lineTo(240, 315);
 artCtx.quadraticCurveTo(205, 307.5, 240, 300);
 artCtx.closePath();
-fillColor(artCtx, "red", "black", 5)
+fillColor(artCtx, "red")
 //drawNose(artCtx, 275, 275, 10, 1);
 window.requestAnimationFrame(draw);
 //fadeOut();

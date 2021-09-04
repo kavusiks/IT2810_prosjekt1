@@ -1,5 +1,78 @@
+header {
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  background: rgb(34, 193, 195);
+  background: linear-gradient(
+    0deg,
+    rgba(34, 193, 195, 1) 0%,
+    rgba(42, 42, 42, 1) 100%
+  );
+  color: white;
+}
+
+#title {
+  color: white;
+  font-size: 10vh;
+  -webkit-text-stroke-width: 2px;
+  -webkit-text-stroke-color: black;
+  margin: 0;
+}
+
+#about-artist {
+  color: black;
+  font-size: 2.5vh;
+  margin: 2vh;
+  padding: 2vh;
+}
+
+#abstractCanvas {
+  width: 550px;
+  height: 550px;
+}
+
+.documentation-hide {
+  display: none;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: Helvetica, sans-serif;
+}
+
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+
+  justify-content: center;
+  background: rgb(34, 193, 195);
+  background: linear-gradient(
+    0deg,
+    rgba(34, 193, 195, 1) 0%,
+    rgba(252, 252, 252, 1) 100%
+  );
+
+  padding: 20px 20px 90px 20px;
+}
+
+.doc-div {
+  display: flex;
+  flex-wrap: wrap;
+
+  flex-direction: column;
+  text-align: center;
+
+  padding: 20px 20px 90px 20px;
+}
+
+.flex-container > div {
+  padding: 50px;
+}
+
 .animate-ears {
-  animation: earsUp 5s infinite;
+  animation: earsUp 3s infinite;
   animation-timing-function: linear;
 }
 
