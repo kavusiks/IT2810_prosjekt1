@@ -1,48 +1,50 @@
-var canvasArt = document.getElementById("abstractCanvas");
-var artCtx = canvasArt.getContext("2d");
+const canvasArt = document.getElementById("abstractCanvas");
+const artCtx = canvasArt.getContext("2d");
 let movingEarsAniamtion = null;
+let y = 150
 
 
 canvasArt.addEventListener('mouseover', animateEars, false);
 canvasArt.addEventListener('mouseout', stopEars, false);
 
-var y=150
 
 function stopEars() {
-  artCtx.clearRect(199, 149, 52,50)
-artCtx.clearRect(199, y-1, 52,52)
-artCtx.clearRect(299, 149, 52,50)
-artCtx.clearRect(299, y-1, 52,52)
+  artCtx.clearRect(199, 149, 52, 50)
+  artCtx.clearRect(199, y - 1, 52, 52)
+  artCtx.clearRect(299, 149, 52, 50)
+  artCtx.clearRect(299, y - 1, 52, 52)
   cancelAnimationFrame(movingEarsAniamtion);
-y=150;
+  y = 150;
 }
 function animateEars() {
-  console.log("fdkjshj");
+  //moving ears back to start postion, when they reach the top of picture
   if (y <= 0) {
-    artCtx.clearRect(199, y-1, 52,52)
-    artCtx.clearRect(299, y-1, 52,52)
-    y=150;
-} 
-movingEarsAniamtion = requestAnimationFrame(animateEars);
+    artCtx.clearRect(199, y - 1, 52, 52)
+    artCtx.clearRect(299, y - 1, 52, 52)
+    y = 150;
+  }
+  movingEarsAniamtion = requestAnimationFrame(animateEars);
 
-artCtx.clearRect(199, 149, 52,50)
-artCtx.clearRect(199, y-1, 52,52)
-artCtx.clearRect(299, 149, 52,50)
-artCtx.clearRect(299, y-1, 52,52)
-y += -1;
-createRect(artCtx, 200, y, 50, 50, "rgb(44, 44, 44)", "pink");
-
-createRect(artCtx, 300, y, 50, 50, "rgb(44, 44, 44)", "pink");
+  //clearing last drawn ears to create the moving animation
+  artCtx.clearRect(199, 149, 52, 50)
+  artCtx.clearRect(199, y - 1, 52, 52)
+  artCtx.clearRect(299, 149, 52, 50)
+  artCtx.clearRect(299, y - 1, 52, 52)
+  y += -1;
+  //drawing ears with the updated y-postion
+  createRect(artCtx, 200, y, 50, 50, "rgb(44, 44, 44)", "pink");
+  createRect(artCtx, 300, y, 50, 50, "rgb(44, 44, 44)", "pink");
 }
 
-function createRect(context, x, y, width, heigth, color, outlineColor) {
+
+function createRect(context, x, y, width, heigth, color) {
   context.beginPath();
   context.rect(x, y, width, heigth)
   context.closePath();
   fillColor(context, color)
 }
 
-function createTrapezoid(context, ax, ay, bx, by, cx, cy, dx, dy, color, outlineColor) {
+function createTrapezoid(context, ax, ay, bx, by, cx, cy, dx, dy, color) {
   context.beginPath();
   context.moveTo(ax, ay);
   context.lineTo(bx, by);
@@ -52,7 +54,7 @@ function createTrapezoid(context, ax, ay, bx, by, cx, cy, dx, dy, color, outline
   fillColor(context, color)
 
 }
-function createRoundedRect(context, diagonalFromX, diagonalFromY, diagonalToX, diagonalToY, color, outlineColor) {
+function createRoundedRect(context, diagonalFromX, diagonalFromY, diagonalToX, diagonalToY, color) {
   context.beginPath();
   context.moveTo(diagonalFromX + 10, diagonalFromY);
   context.lineTo(diagonalToX - 10, diagonalFromY);
@@ -64,8 +66,9 @@ function createRoundedRect(context, diagonalFromX, diagonalFromY, diagonalToX, d
   context.lineTo(diagonalFromX, diagonalFromY + 10);
   context.quadraticCurveTo(diagonalFromX, diagonalFromY, diagonalFromX + 10, diagonalFromY);
   context.closePath();
-  fillColor(context, color, outlineColor, 5)
+  fillColor(context, color)
 }
+
 function fillColor(context, mainColor) {
   context.fillStyle = mainColor;
   context.fill();
@@ -74,15 +77,6 @@ function fillColor(context, mainColor) {
 
 
 
-artCtx.beginPath();
-artCtx.moveTo(240, 300);
-artCtx.lineTo(310, 300);
-artCtx.quadraticCurveTo(345, 307.5, 310, 315);
-artCtx.lineTo(240, 315);
-artCtx.quadraticCurveTo(205, 307.5, 240, 300);
-artCtx.closePath();
-fillColor(artCtx, "red");
-
 function drawNose(context, centerX, centerY, radius, alpha) {
 
   context.beginPath();
@@ -90,6 +84,22 @@ function drawNose(context, centerX, centerY, radius, alpha) {
   context.closePath();
   fillColor(artCtx, `rgba(255, 255, 0, ${alpha})`);
 
+}
+
+function drawMouth(startX, startY, height, width, color) {
+  artCtx.beginPath();
+  //artCtx.moveTo(240, 300);
+  artCtx.moveTo(startX, startY);
+  //artCtx.lineTo(310, 300);
+  artCtx.lineTo(startX + width, startY);
+  //artCtx.quadraticCurveTo(345, 307.5, 310, 315);
+  artCtx.quadraticCurveTo(startX + width - 5, startY + height / 2, startY + height - 5, startY + height);
+  //artCtx.lineTo(240, 315);
+  artCtx.lineTo(startX, startY + height);
+  //artCtx.quadraticCurveTo(205, 307.5, 240, 300);
+  //artCtx.quadraticCurveTo(205, 307.5, 240, 300);
+  artCtx.closePath();
+  fillColor(artCtx, "red");
 }
 
 
@@ -107,37 +117,26 @@ function init() {
 }
 
 function draw() {
-  //prøv å lage en loop som endrer fargen til nesa
+  createRect(artCtx, 200, 200, 150, 150, "rgb(44, 44, 44)", "pink");
+  createRect(artCtx, 200, 150, 50, 50, "rgb(44, 44, 44)", "pink");
+  createRect(artCtx, 300, 150, 50, 50, "rgb(44, 44, 44)", "pink");
+  createTrapezoid(artCtx, 200, 350, 245, 450, 305, 450, 350, 350, "rgb(44, 44, 44)", "pink");
+  createRoundedRect(artCtx, 215, 225, 250, 250, "red", "black");
+  createRoundedRect(artCtx, 300, 225, 335, 250, "red", "black");
+  drawMouth();
 
-createRect(artCtx, 200, 200, 150, 150, "rgb(44, 44, 44)", "pink");
-createRect(artCtx, 200, 150, 50, 50, "rgb(44, 44, 44)", "pink");
-createRect(artCtx, 300, 150, 50, 50, "rgb(44, 44, 44)", "pink");
-createTrapezoid(artCtx, 200, 350, 245, 450, 305, 450, 350, 350, "rgb(44, 44, 44)", "pink");
-createRoundedRect(artCtx, 215, 225, 250, 250, "red", "black");
-createRoundedRect(artCtx, 300, 225, 335, 250, "red", "black");
-artCtx.beginPath();
-artCtx.moveTo(240, 300);
-artCtx.lineTo(310, 300);
-artCtx.quadraticCurveTo(345, 307.5, 310, 315);
-artCtx.lineTo(240, 315);
-artCtx.quadraticCurveTo(205, 307.5, 240, 300);
-artCtx.closePath();
-fillColor(artCtx, "red")
-//drawNose(artCtx, 275, 275, 10, 1);
-window.requestAnimationFrame(draw);
-//fadeOut();
+  window.requestAnimationFrame(draw);
 }
 
-//function drawLeftEar()
 
 var alpha = 1.0;
 function fadeOut() {
-    if (alpha <= 0) {
-        alpha=1;
-    } 
-    requestAnimationFrame(fadeOut);
-    drawNose(artCtx, 275, 275, 10, alpha);
-    alpha += -0.01;
+  if (alpha <= 0) {
+    alpha = 1;
+  }
+  requestAnimationFrame(fadeOut);
+  drawNose(artCtx, 275, 275, 10, alpha);
+  alpha += -0.01;
 
 }
 

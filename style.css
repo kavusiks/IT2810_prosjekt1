@@ -27,15 +27,6 @@ header {
   padding: 2vh;
 }
 
-#abstractCanvas {
-  width: 550px;
-  height: 550px;
-}
-
-.documentation-hide {
-  display: none;
-}
-
 body {
   margin: 0;
   padding: 0;
@@ -54,7 +45,7 @@ body {
     rgba(252, 252, 252, 1) 100%
   );
 
-  padding: 20px 20px 90px 20px;
+  padding: 90px 50px 90px 50px;
 }
 
 .doc-div {
@@ -64,16 +55,22 @@ body {
   flex-direction: column;
   text-align: center;
 
-  padding: 20px 20px 90px 20px;
+  padding: 90px 20px 90px 20px;
+
+  font-size: 1vh;
+  margin: 0;
 }
 
 .flex-container > div {
-  padding: 50px;
+  padding: 100px;
 }
 
 .animate-ears {
   animation: earsUp 3s infinite;
   animation-timing-function: linear;
+}
+ul {
+  list-style: none;
 }
 
 @keyframes earsUp {

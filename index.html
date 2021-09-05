@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>Page Title</title>
+  <title>"Roboto" av Pablo Abstraco</title>
   <link rel="stylesheet" href="style.css">
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,7 +14,7 @@
     <h1 id="title">Pablo Abstracto</h1>
 
   </header>
-  <div id="about-artist">Pablo da Abstracto(1881-1973) var en av de mest kjente kunsterne fra 1900-tallet. Han er kjent
+  <div id="about-artist">Pablo Abstracto(1881-1973) var en av de mest kjente kunsterne fra 1900-tallet. Han er kjent
     for sine abstrakte
     malerier. Maleriene hans var kjent for bruken av geometriske figurer. Under ser vi hans mest kjente verk. </div>
 
@@ -23,7 +23,7 @@
 
     <div id="svg">
 
-      <h3>Roboten (SVG)</h3>
+      <h3>Roboto (SVG)</h3>
       <svg class="abstractSVG" width="550" height="550">
         <rect width="550" height="550" style="fill:lightgrey;stroke-width:3;stroke:rgb(0,0,0)" />
         <polygon id="body" points="200,350 245,450 305,450 350,350"
@@ -66,7 +66,7 @@
     </div>
 
     <div id="canvas">
-      <h3>Roboten (Canvas)</h3>
+      <h3>Roboto (Canvas)</h3>
       <canvas id="abstractCanvas" width="550" height="550"
         style="border:2px solid #000000; background-color: lightgrey;">
       </canvas>
@@ -77,13 +77,52 @@
   </div>
 
   <div class="doc-div">
-    <h3>Dokumentasjon (trykk for å vise/skjule)</h3>
-    <p class="documentation">sadsad</p>
-    <p class="documentation">saad</p>
-    <p class="documentation">sfdssad</p>
+    <h2 id="documentation-toggle">Dokumentasjon (trykk for å vise/skjule)</h2>
+    <div class="documentation">
+      <h3>CSS Grid og Flex</h3>
+      <p>CSS-grid og Flexbox er to metoder å struktuere elemter på webside, slik at den vises som tenkt uavhengig av
+        skjermstørrelse/dimensjon.</p>
+      <p>I dette prosjektet har det blitt brukt Flexbox for å strukturere begge tegningene i en kontainer, slik at de
+        kommer under hverandre eller ved siden av hverandre, avhengig av skjermdimensjon eller størrelse.
+      </p>
+      <p>Flexbox har også blir brukt på dokumentasjonen for å få teksten midtstilt under hverandre. Dette kunne også
+        vært gjort uten flexbox.</p>
+      <h3>HTML SVG og Canvas</h3>
+      <p>SVG og Canvas er begge HTML-elementer som brukes for å skape grafisk tegninger/elementer på websider.</p>
+      <p>SVG-tegningen er skapt ved å definere ulike geometriske figurer. Noen av rektanglene har fått buede kanter for
+        å skape ulike former hos roboten.</p>
+      <p>Canvas-tegningen er skap vet hjelp av JavaScript. Det har blitt brukt både innebygde og egendefinerte. Gjenbruk
+        av funksjonene har vært gunstig, da mange deler av figurene består av lignende elementer med ulik
+        skalering/størrelse/plassering.
+      </p>
+      <h3>jQuery</h3>
+      <p>jQuery har blitt brukt til å skape animasjon i SVG-tegninga. Dette gjøres ved å legge til/fjerne CSS klassen
+        som styrer med animasjonen.</p>
+      <h3>Cross-browser testing</h3>
+      <p>
+        Cross-browser testing går ut på å teste at nettsida virker som tenkt på ulike nettsider.
+      </p>
+      <p>Det har blitt gjort på denne sida ved teste på både Chrome og Safari. I tillegg har også nettsida blitt
+        kontrollert med skalering i begge nettleserne.</p>
+      <h3>Nyttige kilder</h3>
+      <ul>
+        <li>Canvas: <a
+            href="https://www.w3schools.com/html/html5_canvas.asp">https://www.w3schools.com/tags/canvas_arc.asp</a>
+        </li>
+        <li>SVG: <a href="https://www.w3schools.com/html/html5_svg.asp">https://www.w3schools.com/html/html5_svg.asp</a>
+        </li>
+        <li>jQuery: <a href="https://www.w3schools.com/jquery/default.asp">https://www.w3schools.com/jquery/</a></li>
+        <li>CSS Grid: <a
+            href="https://www.w3schools.com/css/css_grid.asp">https://css-tricks.com/quick-whats-the-difference-between-flexbox-and-grid/</a>
+        </li>
+        <li>CSS Flexbox: <a
+            href="https://www.w3schools.com/css/css3_flexbox.asp">https://css-tricks.com/snippets/css/a-guide-to-flexbox/</a>
+        </li>
+      </ul>
+    </div>
     <script type="text/javascript">
       $(document).ready(function () {
-        $("h3").click(function () {
+        $("#documentation-toggle").click(function () {
           $(".documentation").toggle();
         });
       })
