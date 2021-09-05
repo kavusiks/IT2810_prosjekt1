@@ -3,6 +3,7 @@ header {
   margin: 0;
   padding: 0;
   text-align: center;
+  /*For the few browsers that don't fully support gradient*/
   background: rgb(34, 193, 195);
   background: linear-gradient(
     0deg,
@@ -38,6 +39,7 @@ body {
   flex-wrap: wrap;
 
   justify-content: center;
+  /*For the few browsers that don't fully support gradient*/
   background: rgb(34, 193, 195);
   background: linear-gradient(
     0deg,

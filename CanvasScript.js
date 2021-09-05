@@ -93,13 +93,13 @@ function drawMouth(startX, startY, height, width, color) {
   //artCtx.lineTo(310, 300);
   artCtx.lineTo(startX + width, startY);
   //artCtx.quadraticCurveTo(345, 307.5, 310, 315);
-  artCtx.quadraticCurveTo(startX + width - 5, startY + height / 2, startY + height - 5, startY + height);
+  artCtx.quadraticCurveTo(startX + width + width / 2, startY + height / 2, startY + height - 5, startY + height);
   //artCtx.lineTo(240, 315);
   artCtx.lineTo(startX, startY + height);
   //artCtx.quadraticCurveTo(205, 307.5, 240, 300);
-  //artCtx.quadraticCurveTo(205, 307.5, 240, 300);
+  artCtx.quadraticCurveTo(startX - width / 2, startY + height / 2, startX, startY);
   artCtx.closePath();
-  fillColor(artCtx, "red");
+  fillColor(artCtx, color);
 }
 
 
@@ -123,7 +123,7 @@ function draw() {
   createTrapezoid(artCtx, 200, 350, 245, 450, 305, 450, 350, 350, "rgb(44, 44, 44)", "pink");
   createRoundedRect(artCtx, 215, 225, 250, 250, "red", "black");
   createRoundedRect(artCtx, 300, 225, 335, 250, "red", "black");
-  drawMouth();
+  drawMouth(240, 300, 15, 70, "red");
 
   window.requestAnimationFrame(draw);
 }
