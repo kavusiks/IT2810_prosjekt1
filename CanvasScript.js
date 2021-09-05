@@ -88,32 +88,19 @@ function drawNose(context, centerX, centerY, radius, alpha) {
 
 function drawMouth(startX, startY, height, width, color) {
   artCtx.beginPath();
-  //artCtx.moveTo(240, 300);
   artCtx.moveTo(startX, startY);
-  //artCtx.lineTo(310, 300);
   artCtx.lineTo(startX + width, startY);
-  //artCtx.quadraticCurveTo(345, 307.5, 310, 315);
   artCtx.quadraticCurveTo(startX + width + width / 2, startY + height / 2, startY + height - 5, startY + height);
-  //artCtx.lineTo(240, 315);
   artCtx.lineTo(startX, startY + height);
-  //artCtx.quadraticCurveTo(205, 307.5, 240, 300);
   artCtx.quadraticCurveTo(startX - width / 2, startY + height / 2, startX, startY);
   artCtx.closePath();
   fillColor(artCtx, color);
 }
 
 
-function hideNose(context, centerX, centerY, radius) {
-  context.beginPath();
-  context.arc(centerX, centerY, radius, 0, 2 * Math.PI);
-  context.closePath();
-  fillColor(artCtx, "rgb(44,44,44)");
-}
-drawNose(artCtx, 275, 275, 10);
-
 function init() {
   window.requestAnimationFrame(draw);
-  fadeOut();
+  fadeOutNose();
 }
 
 function draw() {
@@ -129,12 +116,13 @@ function draw() {
 }
 
 
-var alpha = 1.0;
-function fadeOut() {
+let alpha = 1.0;
+//Method to fadeout the nose to make blinking animation by repeating it
+function fadeOutNose() {
   if (alpha <= 0) {
     alpha = 1;
   }
-  requestAnimationFrame(fadeOut);
+  requestAnimationFrame(fadeOutNose);
   drawNose(artCtx, 275, 275, 10, alpha);
   alpha += -0.01;
 
